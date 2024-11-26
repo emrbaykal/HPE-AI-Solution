@@ -405,7 +405,9 @@ It covers the installation of essential components for both Controller and Worke
    kubectl get storageclasses
     kubectl describe storageclasses nfs-csi
    ```
-6. ***Install helm package manager:***
+6. ***Install helm package manager (Controller & Worker Nodes):***
+
+   Apply the following steps on the Kubernetes controller & worker nodes.
 
    Helm is the package manager for Kubernetes, We will use the Helm package manager on the Kubernetes cluster to deploy the HPE Development Environment.
    
@@ -419,7 +421,9 @@ It covers the installation of essential components for both Controller and Worke
    sudo apt-get install helm
    ```
    
-7. ***Install NVIDIA CUDA Toolkit & Drivers:***
+7. ***Install NVIDIA CUDA Toolkit & Drivers (Controller & Worker Nodes):***
+
+   Apply the following steps on the Kubernetes controller & worker nodes.
 
    CUDA® is a parallel computing platform and programming model invented by NVIDIA®. It enables dramatic increases in computing performance by harnessing the power of the graphics processing unit (GPU).
 
@@ -459,16 +463,42 @@ It covers the installation of essential components for both Controller and Worke
    nvidia-installer –version
    ```
 
-8. ***Installing the NVIDIA Container Toolkit:***
+9. ***Installing the NVIDIA Container Toolkit (Controller Node):***
 
+   Apply the following steps on the Kubernetes controller node.
+   
    For GPU-based training, the Kubernetes cluster should have GPU support enabled.
+
+   Referance Documentation:
+   * [K8 Device Plugin Documentatiın](https://github.com/NVIDIA/k8s-device-plugin?tab=readme-ov-file#quick-start)
 
    ***a. Prerequisites:***
 
-   * You installed a supported container engine (Docker, Containerd, CRI-O, Podman).
-   * You installed the NVIDIA Container Toolkit.
+   * Install the NVIDIA GPU driver for your Linux distribution. NVIDIA
   
-   ***b. Configuring containerd:***
+   ***b. Install NVIDIA Container Toolkit:***
+
+   * Configure the production repository:
+
+   ```bash
+      curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg \
+      && curl -s -L https://nvidia.github.io/libnvidia-container/stable/deb/nvidia-container-toolkit.list | \
+      sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | \
+      sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
+   ```
+   * Update the packages list from the repository:
+
+   ```bash
+   sudo apt-get update
+   ```
+
+   * Install the NVIDIA Container Toolkit packages:
+
+   ```bash
+   sudo apt-get install -y nvidia-container-toolkit
+   ```
+   
+   ***c. Configuring containerd:***
 
    * Configure the container runtime by using the nvidia-ctk command:
 
@@ -483,14 +513,14 @@ It covers the installation of essential components for both Controller and Worke
       sudo systemctl restart containerd
       ```
 
-9. ***Enabling GPU Support in Kubernetes:***
+11. ***Enabling GPU Support in Kubernetes:***
 
     * Once you have configured the options above on all the GPU nodes in your cluster, you can enable GPU support by deploying the following Daemonset:
 
       ***Note:*** This is a simple static daemonset meant to demonstrate the basic features of the nvidia-device-plugin.
 
       Referance Documentation:
-         * [K8 Device Plugin Docu](https://github.com/NVIDIA/k8s-device-plugin?tab=readme-ov-file#quick-start)
+         * [K8 Device Plugin Documentatiın](https://github.com/NVIDIA/k8s-device-plugin?tab=readme-ov-file#quick-start)
 
      ```bash
       kubectl create -f https://raw.githubusercontent.com/NVIDIA/k8s-device-plugin/v0.17.0/deployments/static/nvidia-device-plugin.yml
@@ -527,7 +557,7 @@ It covers the installation of essential components for both Controller and Worke
 
       
    
-11. ***Install NVIDIA CUDA Toolkit & Drivers:***
+12. ***Install NVIDIA CUDA Toolkit & Drivers:***
 
    ***a. Prerequisites:***
      
