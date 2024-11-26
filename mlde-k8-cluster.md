@@ -433,4 +433,4 @@ It covers the installation of essential components for both Controller and Worke
 
    * You can download HPE NVIDIA L40S linux drivers below:
 
-            [NVIDIA L40S linux drivers](https://support.hpe.com/connect/s/softwaredetails?language=en_US&collectionId=MTX-25c295e9e7a2421a&tab=revisionHistory)
+        [NVIDIA L40S linux drivers](https://support.hpe.com/connect/s/softwaredetails?language=en_US&collectionId=MTX-25c295e9e7a2421a&tab=revisionHistory)
