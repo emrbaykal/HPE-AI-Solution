@@ -37,6 +37,8 @@ It covers the installation of essential components for both Controller and Worke
 
 1. **Preparing the Operating System (Controller & Worker Nodes)**
 
+   Apply the following steps on the Kubernetes controller and worker nodes.
+
      ***a. Turn Off Swap:***
 
      * You MUST disable swap in order for the kubelet to work properly. 
