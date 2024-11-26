@@ -92,7 +92,7 @@ It covers the installation of essential components for both Controller and Worke
        sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
        sudo apt-get update
      ```
-     ***f. Install the containerd packages:***
+     ***e. Install the containerd packages:***
 
      * To install the latest version, run:
 
