@@ -1,4 +1,4 @@
-# Kubernetes Cluster Installation and Configuration Guide
+# Kubernetes Cluster and HPE MLDE Installation and Configuration Guide
 
 This guide provides how to set up a Kubernetes cluster on Ubuntu 22.04 and Install the HPE Machine Learning Development Environment library and start a cluster locally. 
 
