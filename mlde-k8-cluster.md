@@ -463,7 +463,7 @@ It covers the installation of essential components for both Controller and Worke
    nvidia-installer –version
    ```
 
-9. ***Installing the NVIDIA Container Toolkit (Controller Node):***
+8. ***Installing the NVIDIA Container Toolkit (Controller Node):***
 
    Apply the following steps on the Kubernetes controller node.
    
@@ -513,7 +513,7 @@ It covers the installation of essential components for both Controller and Worke
       sudo systemctl restart containerd
       ```
 
-11. ***Enabling GPU Support in Kubernetes:***
+9. ***Enabling GPU Support in Kubernetes:***
 
     * Once you have configured the options above on all the GPU nodes in your cluster, you can enable GPU support by deploying the following Daemonset:
 
@@ -522,6 +522,8 @@ It covers the installation of essential components for both Controller and Worke
       Referance Documentation:
          * [K8 Device Plugin Documentation](https://github.com/NVIDIA/k8s-device-plugin?tab=readme-ov-file#quick-start)
 
+    * Install NVIDIA Device Plugin: 
+ 
      ```bash
       kubectl create -f https://raw.githubusercontent.com/NVIDIA/k8s-device-plugin/v0.17.0/deployments/static/nvidia-device-plugin.yml
      ```
@@ -557,7 +559,7 @@ It covers the installation of essential components for both Controller and Worke
 
       
    
-12. ***Install NVIDIA CUDA Toolkit & Drivers:***
+11. ***Install NVIDIA CUDA Toolkit & Drivers:***
 
    ***a. Prerequisites:***
      
