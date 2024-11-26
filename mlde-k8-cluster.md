@@ -72,7 +72,9 @@ It covers the installation of essential components for both Controller and Worke
      sudo apt upgrade -y
      sudo reboot
      ```
-     ***d. Add Docker's official GPG key:***
+     ***d. Enable Docker Repositories:***
+     
+     * Add Docker's official GPG key:
         
       ```bash
 	sudo apt-get update
@@ -81,9 +83,7 @@ It covers the installation of essential components for both Controller and Worke
 	sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
 	sudo chmod a+r /etc/apt/keyrings/docker.asc
       ```
-     ***e. Add Docker Repos to the repository to Apt sources:***
-
-      * Set up Docker's apt repository.
+     * Add Docker Repos to the repository to Apt sources:
 
      ```bash
        echo \
