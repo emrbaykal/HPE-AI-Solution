@@ -100,8 +100,6 @@ It covers the installation of essential components for both Controller and Worke
        sudo apt-get install containerd.io
      ```
 
-     ***g. Configuring the kubelet cgroup driver:***
-
      *  To use the systemd cgroup driver in /etc/containerd/config.toml with runc, set 
 
      ```bash
@@ -109,7 +107,7 @@ It covers the installation of essential components for both Controller and Worke
        containerd config default > /etc/containerd/config.toml
      ```
      
-     ***h. Change SystemdCgroup and sandbox_image parameters:***
+     * Change SystemdCgroup and sandbox_image parameters:
    
      ```bash
        sudo sed -i \
@@ -118,7 +116,7 @@ It covers the installation of essential components for both Controller and Worke
        /etc/containerd/config.toml
      ```
      
-     ***I. Restart & Enable containerd services:***
+     * Restart & Enable containerd services:
    
      ```bash
        sudo systemctl restart containerd
