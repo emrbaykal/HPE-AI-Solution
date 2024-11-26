@@ -65,6 +65,8 @@ It covers the installation of essential components for both Controller and Worke
      sudo sysctl -p /etc/sysctl.conf
      ```
      ***c. Upgrade Operating System to the latest patch level:***
+
+     * Upgrading operating system to the lastes patch level.
      ```bash
      sudo apt upgrade -y
      sudo reboot
