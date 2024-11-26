@@ -434,3 +434,23 @@ It covers the installation of essential components for both Controller and Worke
    * You can download HPE NVIDIA L40S linux drivers below:
 
         [NVIDIA L40S linux drivers](https://support.hpe.com/connect/s/softwaredetails?language=en_US&collectionId=MTX-25c295e9e7a2421a&tab=revisionHistory)
+
+   * Extract the contents of the file:
+   ```bash
+   tar -xvf NVIDIA_L40S_Linux_Driver_550.90.07.tar.gz
+   ```
+
+   * Uninstall any installed NVIDIA driver:
+   ```bash
+   nvidia-installer –uninstall
+   ```
+
+   * Install the new NVIDIA driver that you have downloaded & then reboot:
+   ```bash
+   sh NVIDIA-Linux-x86_64-550.90.07.run
+   reboot
+   ```
+   * Verify that the new driver is installed:
+   ```bash
+   nvidia-installer –version
+   ```
