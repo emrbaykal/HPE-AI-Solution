@@ -470,7 +470,7 @@ It covers the installation of essential components for both Controller and Worke
    For GPU-based training, the Kubernetes cluster should have GPU support enabled.
 
    Referance Documentation:
-   * [K8 Device Plugin Documentatiın](https://github.com/NVIDIA/k8s-device-plugin?tab=readme-ov-file#quick-start)
+   * [NVIDIA Container Toolkit Documentation](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html#configuring-containerd-for-kubernetes)
 
    ***a. Prerequisites:***
 
@@ -520,7 +520,7 @@ It covers the installation of essential components for both Controller and Worke
       ***Note:*** This is a simple static daemonset meant to demonstrate the basic features of the nvidia-device-plugin.
 
       Referance Documentation:
-         * [K8 Device Plugin Documentatiın](https://github.com/NVIDIA/k8s-device-plugin?tab=readme-ov-file#quick-start)
+         * [K8 Device Plugin Documentation](https://github.com/NVIDIA/k8s-device-plugin?tab=readme-ov-file#quick-start)
 
      ```bash
       kubectl create -f https://raw.githubusercontent.com/NVIDIA/k8s-device-plugin/v0.17.0/deployments/static/nvidia-device-plugin.yml
