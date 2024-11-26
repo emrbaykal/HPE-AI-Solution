@@ -465,6 +465,20 @@ It covers the installation of essential components for both Controller and Worke
 
    * You installed a supported container engine (Docker, Containerd, CRI-O, Podman).
    * You installed the NVIDIA Container Toolkit.
+  
+   ***b. Configuring containerd:***
+
+   * Configure the container runtime by using the nvidia-ctk command:
+
+     The nvidia-ctk command modifies the /etc/containerd/config.toml file on the host. The file is updated so that containerd can use the NVIDIA Container Runtime.
+     
+   ```bash
+   sudo nvidia-ctk runtime configure --runtime=containerd
+   ```
+   * 
+   * 
+
+   
 10. ***Install NVIDIA CUDA Toolkit & Drivers:***
 
    ***a. Prerequisites:***
