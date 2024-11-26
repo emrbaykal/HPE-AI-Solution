@@ -472,11 +472,15 @@ It covers the installation of essential components for both Controller and Worke
 
      The nvidia-ctk command modifies the /etc/containerd/config.toml file on the host. The file is updated so that containerd can use the NVIDIA Container Runtime.
      
-   ```bash
-   sudo nvidia-ctk runtime configure --runtime=containerd
-   ```
-   * 
-   * 
+      ```bash
+      sudo nvidia-ctk runtime configure --runtime=containerd
+      ```
+   * Restart containerd:
+
+      ```bash
+      sudo systemctl restart containerd
+      ```
+     
 
    
 10. ***Install NVIDIA CUDA Toolkit & Drivers:***
