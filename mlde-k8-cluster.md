@@ -319,7 +319,7 @@ It covers the installation of essential components for both Controller and Worke
 	 kubectl apply -f l2advertisement.yaml
    ```
    
-8. ***Installing the NFS CSI Driver on a Kubernetes cluster to allow for dynamic provisioning of Persistent Volumes:***
+5. ***Installing the NFS CSI Driver on a Kubernetes cluster to allow for dynamic provisioning of Persistent Volumes:***
 
    For persistent storage, we are using an NFS server in the lab environment. You can set up the NFS server on the controller node.
    
@@ -401,7 +401,7 @@ It covers the installation of essential components for both Controller and Worke
    kubectl get storageclasses
     kubectl describe storageclasses nfs-csi
    ```
-10. ***Install helm package manager:***
+6. ***Install helm package manager:***
 
    Helm is the package manager for Kubernetes, We will use the Helm package manager on the Kubernetes cluster to deploy the HPE Development Environment.
    
