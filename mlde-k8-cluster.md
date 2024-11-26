@@ -488,6 +488,7 @@ It covers the installation of essential components for both Controller and Worke
     * Once you have configured the options above on all the GPU nodes in your cluster, you can enable GPU support by deploying the following Daemonset:
 
       Referance Docu:
+         * [K8 Device Plugin Docu](https://github.com/NVIDIA/k8s-device-plugin?tab=readme-ov-file#quick-start)
          * 
 
      ```bash
