@@ -39,7 +39,7 @@ It covers the installation of essential components for both Controller and Worke
 
      ***a. Turn Off Swap:***
 
-     * You MUST disable swap in order for the kubelet to work properly.
+     * You MUST disable swap in order for the kubelet to work properly.< br / >
  
      ```bash
      sudo swapoff /swapfile
