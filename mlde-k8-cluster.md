@@ -39,7 +39,7 @@ It covers the installation of essential components for both Controller and Worke
 
      ***a. Turn Off Swap:***
 
-     * You MUST disable swap in order for the kubelet to work properly. < br >
+     * You MUST disable swap in order for the kubelet to work properly. 
  
      ```bash
      sudo swapoff /swapfile
@@ -48,6 +48,9 @@ It covers the installation of essential components for both Controller and Worke
      ```
 
      ***b. Enable IPv4 Packet Forwarding:***
+
+     * By default, the Linux kernel does not allow IPv4 packets to be routed between interfaces.Most Kubernetes cluster networking implementations will change this setting.
+
      ```bash
      cat << EOF | sudo tee /etc/sysctl.d/k8s.conf
      net.ipv4.ip_forward = 1
