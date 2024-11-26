@@ -461,6 +461,8 @@ It covers the installation of essential components for both Controller and Worke
 
 8. ***Installing the NVIDIA Container Toolkit:***
 
+   For GPU-based training, the Kubernetes cluster should have GPU support enabled.
+
    ***a. Prerequisites:***
 
    * You installed a supported container engine (Docker, Containerd, CRI-O, Podman).
@@ -480,10 +482,50 @@ It covers the installation of essential components for both Controller and Worke
       ```bash
       sudo systemctl restart containerd
       ```
+
+9. ***Enabling GPU Support in Kubernetes:***
+
+    * Once you have configured the options above on all the GPU nodes in your cluster, you can enable GPU support by deploying the following Daemonset:
+
+      Referance Docu:
+         * 
+
+     ```bash
+      kubectl create -f https://raw.githubusercontent.com/NVIDIA/k8s-device-plugin/v0.17.0/deployments/static/nvidia-device-plugin.yml
+      ```
+    * Running GPU Jobs (For testing purpose):
+      
+     ```bash
+      cat <<EOF | kubectl apply -f -
+	apiVersion: v1
+	kind: Pod
+	metadata:
+	  name: gpu-pod
+	spec:
+	  restartPolicy: Never
+	  containers:
+	    - name: cuda-container
+	      image: nvcr.io/nvidia/k8s/cuda-sample:vectoradd-cuda12.5.0
+	      resources:
+	        limits:
+	          nvidia.com/gpu: 1 # requesting 1 GPU
+	EOF
+     ```
+
+     ```bash
+      $ kubectl logs gpu-pod
+        [Vector addition of 50000 elements]
+	Copy input data from the host memory to the CUDA device
+	CUDA kernel launch with 196 blocks of 256 threads
+	Copy output data from the CUDA device to the host memory
+	Test PASSED
+	Done
+     ```
      
 
+      
    
-10. ***Install NVIDIA CUDA Toolkit & Drivers:***
+11. ***Install NVIDIA CUDA Toolkit & Drivers:***
 
    ***a. Prerequisites:***
      
