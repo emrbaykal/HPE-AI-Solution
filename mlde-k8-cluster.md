@@ -1,6 +1,8 @@
 # Kubernetes Cluster Installation and Configuration Guide
 
-This guide provides how to set up and configure a Kubernetes cluster on Ubuntu 22.04. It covers the installation of essential components for both Controller and Worker Nodes and includes additional configurations such as MetaLB and NFS CSI Driver for advanced cluster functionalities.
+This guide provides how to set up a Kubernetes cluster on Ubuntu 22.04 and Install the HPE Machine Learning Development Environment library and start a cluster locally. 
+
+It covers the installation of essential components for both Controller and Worker Nodes and includes additional configurations such as MetaLB and NFS CSI Driver for advanced cluster functionalities.
 
 ## Key Features
 1. **Operating System Preparation**
