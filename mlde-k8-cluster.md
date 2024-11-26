@@ -73,7 +73,7 @@ It covers the installation of essential components for both Controller and Worke
      sudo reboot
      ```
      ***d. Add Docker's official GPG key:***
-   
+        
       ```bash
 	sudo apt-get update
 	sudo apt-get install ca-certificates curl
@@ -82,6 +82,9 @@ It covers the installation of essential components for both Controller and Worke
 	sudo chmod a+r /etc/apt/keyrings/docker.asc
       ```
      ***e. Add Docker Repos to the repository to Apt sources:***
+
+      * Set up Docker's apt repository.
+
      ```bash
        echo \
        "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
@@ -90,23 +93,33 @@ It covers the installation of essential components for both Controller and Worke
        sudo apt-get update
      ```
      ***f. Install the containerd packages:***
+
+     * To install the latest version, run:
+
      ```bash
        sudo apt-get install containerd.io
      ```
 
-     ***g. To use the systemd cgroup driver in /etc/containerd/config.toml with runc, set:***
+     ***g. Configuring the kubelet cgroup driver:***
+
+     *  To use the systemd cgroup driver in /etc/containerd/config.toml with runc, set 
+
      ```bash
        sudo su -
        containerd config default > /etc/containerd/config.toml
      ```
+     
      ***h. Change SystemdCgroup and sandbox_image parameters:***
+   
      ```bash
        sudo sed -i \
        -e '/SystemdCgroup/ s/= .*/= true/' \
        -e '/sandbox_image/ s|= .*|= "registry.k8s.io/pause:3.10"|' \
        /etc/containerd/config.toml
      ```
+     
      ***I. Restart & Enable containerd services:***
+   
      ```bash
        sudo systemctl restart containerd
        sudo systemctl enable containerd
