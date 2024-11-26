@@ -212,9 +212,13 @@ It covers the installation of essential components for both Controller and Worke
    ```bash
    kubectl apply kube-flannel.yml
    ```
-3. ***Installing kubeadm & Join Kubernetes Cluster non Worker Nodes: (Worker Nodes)***
+3. *** Adding Worker Nodes: (Worker Nodes)***
 
    Apply the following steps on the Kubernetes worker nodes.
+
+   * Each joining worker node has installed the required components from Installing kubeadm, such as, kubeadm, the kubelet and a container runtime.
+     
+   * A running kubeadm cluster created by kubeadm init and following the steps in the document Creating a cluster with kubeadm.
 
    ***a. Enable Kubernetes Repositories:***
 
