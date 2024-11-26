@@ -414,3 +414,23 @@ It covers the installation of essential components for both Controller and Worke
    sudo apt-get update
    sudo apt-get install helm
    ```
+   
+7. ***Install NVIDIA CUDA Toolkit & Drivers:***
+
+   CUDA® is a parallel computing platform and programming model invented by NVIDIA®. It enables dramatic increases in computing performance by harnessing the power of the graphics processing unit (GPU).
+
+   * The base installer is available for download below:
+
+   ```bash
+    wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64/cuda-ubuntu2404.pin
+    sudo mv cuda-ubuntu2404.pin /etc/apt/preferences.d/cuda-repository-pin-600
+    wget https://developer.download.nvidia.com/compute/cuda/12.6.3/local_installers/cuda-repo-ubuntu2404-12-6-local_12.6.3-560.35.05-1_amd64.deb
+   sudo dpkg -i cuda-repo-ubuntu2404-12-6-local_12.6.3-560.35.05-1_amd64.deb
+   sudo cp /var/cuda-repo-ubuntu2404-12-6-local/cuda-*-keyring.gpg /usr/share/keyrings/
+   sudo apt-get update
+   sudo apt-get -y install cuda-toolkit-12-6
+   ```
+
+   * You can download HPE NVIDIA L40S linux drivers below:
+
+    [NVIDIA L40S linux drivers](https://support.hpe.com/connect/s/softwaredetails?language=en_US&collectionId=MTX-25c295e9e7a2421a&tab=revisionHistory)
