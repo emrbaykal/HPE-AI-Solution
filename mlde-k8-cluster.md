@@ -66,12 +66,14 @@ It covers the installation of essential components for both Controller and Worke
      ```
      ***c. Upgrade Operating System to the latest patch level:***
 
-     * Upgrading operating system to the lastes patch level.
+     * Upgrading operating system to the lastest patch level.
+       
      ```bash
      sudo apt upgrade -y
      sudo reboot
      ```
      ***d. Add Docker's official GPG key:***
+   
       ```bash
 	sudo apt-get update
 	sudo apt-get install ca-certificates curl
