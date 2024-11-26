@@ -317,20 +317,30 @@ It covers the installation of essential components for both Controller and Worke
    ```
    
 8. ***Installing the NFS CSI Driver on a Kubernetes cluster to allow for dynamic provisioning of Persistent Volumes:***
+
+   For persistent storage, we are using an NFS server in the lab environment. You can set up the NFS server on the controller node.
    
    ***a. Configure NFS Share (Controller Node):***
+
+   Apply the following steps on the Kubernetes controller node.
+   
    * Install NFS Server & Client:
+     
    ```bash
      sudo apt  update
      sudo apt  install nfs-kernel-server nfs-common
    ```
+   
    * Configure Exports:
+     
    ```bash
      sudo mkdir -p /var/nfsshare/determined
      sudo chmod -R 777 /var/nfsshare/determined
      echo '/var/nfsshare/determined     *(rw,sync,insecure,no_subtree_check,no_root_squash)' | sudo tee /etc/exports
    ```
+   
    * Now we need to actually tell the server to export the directory:
+     
    ```bash
      sudo exportfs -ar
      sudo exportfs -v
@@ -338,6 +348,9 @@ It covers the installation of essential components for both Controller and Worke
    ```
 
    ***b. Install nfs-common packages to the worker nodes (Worker Nodes):***
+
+   Apply the following steps on the Kubernetes worker nodes.
+   
    ```bash
      sudo apt  update
      sudo apt  install nfs-common
@@ -345,19 +358,23 @@ It covers the installation of essential components for both Controller and Worke
 
    ***c. Installing the NFS CSI Driver (Controller Node):***
 
+   Apply the following steps on the Kubernetes controller node.
+
    * Install NFS CSI Driver:
+     
    ```bash
    curl -skSL https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/v4.9.0/deploy/install-driver.sh | bash -s v4.9.0 --
    ```
 
    * Control Installed NFS CSI Drivers:
+     
    ```bash
    kubectl -n kube-system get pod -o wide -l app=csi-nfs-controller
    kubectl -n kube-system get pod -o wide -l app=csi-nfs-node
    ```
-   ***d. Create Storage Class (Controller Node):***
-
-   * The creation of the storage class required for the use of dynamic storage areas.
+   
+   * Create Storage Class: The creation of the storage class required for the use of dynamic storage areas.
+     
    ```bash
    cat <<EOF | tee -a nfs-sc.yaml
    apiVersion: storage.k8s.io/v1
@@ -381,7 +398,7 @@ It covers the installation of essential components for both Controller and Worke
    kubectl get storageclasses
     kubectl describe storageclasses nfs-csi
    ```
-9. ***Install helm package:***
+10. ***Install helm package:***
 
    * Install Helm packages to use deploy environments:
    ```bash
