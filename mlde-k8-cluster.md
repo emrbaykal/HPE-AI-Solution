@@ -260,18 +260,23 @@ It covers the installation of essential components for both Controller and Worke
 	kubectl label node Worker-Node-Name node-role.kubernetes.io/worker=worker
     ```
     
-7. ***MetaLB Installation (Controller Node):***
+4. ***MetaLB Installation (Controller Node):***
 
+   Apply the following steps on the Kubernetes controller node.
+    
    * MetalLB hooks into your Kubernetes cluster, and provides a network load-balancer implementation. In short, it allows you to create Kubernetes services of type LoadBalancer in clusters that don’t run on a cloud provider.
 
    ***a. The installation of MetalLB:***
    ```bash
 	 kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.14.7/config/manifests/metallb-native.yaml
    ```
-   ***b. Check what is provisioned:***
+
+   * Check what is provisioned:
+     
    ```bash
 	 kubectl get all --namespace metallb-system
    ```
+   
     ***c. Configure Manifest File:***
     * The installation manifest does not include a configuration file. MetalLB’s components although will start, they will remain idle until we provide the required configuration as an IpAddressPool.
    ```bash
