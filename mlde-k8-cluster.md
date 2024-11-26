@@ -28,6 +28,9 @@ It covers the installation of essential components for both Controller and Worke
    - Installing and configuring the NFS CSI Driver
    - Creating dynamic storage classes
 
+6. **Install helm package**
+   - Install Helm packages to use deploy environments
+
 ## Requirements
 - **Operating System:** Ubuntu 22.04
 - **Kubernetes Version:** v1.31 or later
@@ -398,7 +401,7 @@ It covers the installation of essential components for both Controller and Worke
    kubectl get storageclasses
     kubectl describe storageclasses nfs-csi
    ```
-10. ***Install helm package:***
+10. ***Install helm package manager:***
 
    Helm is the package manager for Kubernetes, We will use the Helm package manager on the Kubernetes cluster to deploy the HPE Development Environment.
    
