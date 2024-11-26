@@ -38,6 +38,9 @@ It covers the installation of essential components for both Controller and Worke
 1. **Preparing the Operating System (Controller & Worker Nodes)**
 
      ***a. Turn Off Swap:***
+
+     * You MUST disable swap in order for the kubelet to work properly.
+ 
      ```bash
      sudo swapoff /swapfile
      sudo sed -i '/\/swapfile/d' /etc/fstab
@@ -103,7 +106,7 @@ It covers the installation of essential components for both Controller and Worke
        sudo systemctl status containerd
      ```
        
-2. ***Installing Kubeadm (Controller Node)***
+3. ***Installing Kubeadm (Controller Node)***
 
    ***a. Enable Kubernetes Repositories:***
    ```bash
@@ -166,7 +169,7 @@ It covers the installation of essential components for both Controller and Worke
 
    kubectl apply kube-flannel.yml
    ```
-3. ***Installing kubeadm & Join Kubernetes Cluster non Worker Nodes: (Worker Nodes)***
+4. ***Installing kubeadm & Join Kubernetes Cluster non Worker Nodes: (Worker Nodes)***
 
    ***a. Enable Kubernetes Repositories:***
    ```bash
@@ -194,11 +197,11 @@ It covers the installation of essential components for both Controller and Worke
 	--discovery-token-ca-cert-hash sha256:xxxx
     ```
 
-4. ***Assign worker roles to the compute nodes: (Controller Node)***
+5. ***Assign worker roles to the compute nodes: (Controller Node)***
     ```bash
 	kubectl label node Worker-Node-Name node-role.kubernetes.io/worker=worker
     ```
-5. ***MetaLB Installation (Controller Node):***
+6. ***MetaLB Installation (Controller Node):***
 
    * MetalLB hooks into your Kubernetes cluster, and provides a network load-balancer implementation. In short, it allows you to create Kubernetes services of type LoadBalancer in clusters that don’t run on a cloud provider.
 
@@ -242,7 +245,7 @@ It covers the installation of essential components for both Controller and Worke
 	 kubectl apply -f ipaddresspool.yaml
 	 kubectl apply -f l2advertisement.yaml
    ```
-6. ***Installing the NFS CSI Driver on a Kubernetes cluster to allow for dynamic provisioning of Persistent Volumes:***
+7. ***Installing the NFS CSI Driver on a Kubernetes cluster to allow for dynamic provisioning of Persistent Volumes:***
    
    ***a. Configure NFS Share (Controller Node):***
    * Install NFS Server & Client:
@@ -307,7 +310,7 @@ It covers the installation of essential components for both Controller and Worke
    kubectl get storageclasses
     kubectl describe storageclasses nfs-csi
    ```
-7. ***Install helm package:***
+8. ***Install helm package:***
 
    * Install Helm packages to use deploy environments:
    ```bash
