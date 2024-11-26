@@ -400,7 +400,10 @@ It covers the installation of essential components for both Controller and Worke
    ```
 10. ***Install helm package:***
 
+   Helm is the package manager for Kubernetes, We will use the Helm package manager on the Kubernetes cluster to deploy the HPE Development Environment.
+   
    * Install Helm packages to use deploy environments:
+     
    ```bash
    curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
    sudo apt-get install apt-transport-https --yes
