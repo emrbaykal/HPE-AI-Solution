@@ -513,7 +513,7 @@ It covers the installation of essential components for both Controller and Worke
      ```
 
      ```bash
-      $ kubectl logs gpu-pod
+        $ kubectl logs gpu-pod
         [Vector addition of 50000 elements]
 	Copy input data from the host memory to the CUDA device
 	CUDA kernel launch with 196 blocks of 256 threads
