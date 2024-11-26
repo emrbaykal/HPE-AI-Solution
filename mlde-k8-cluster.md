@@ -212,7 +212,7 @@ It covers the installation of essential components for both Controller and Worke
    ```bash
    kubectl apply kube-flannel.yml
    ```
-3. *** Adding Worker Nodes: (Worker Nodes)***
+3. ***Adding Worker Nodes: (Worker Nodes)***
 
    Apply the following steps on the Kubernetes worker nodes.
 
@@ -267,6 +267,7 @@ It covers the installation of essential components for both Controller and Worke
    * MetalLB hooks into your Kubernetes cluster, and provides a network load-balancer implementation. In short, it allows you to create Kubernetes services of type LoadBalancer in clusters that don’t run on a cloud provider.
 
    ***a. The installation of MetalLB:***
+   
    ```bash
 	 kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.14.7/config/manifests/metallb-native.yaml
    ```
@@ -277,8 +278,10 @@ It covers the installation of essential components for both Controller and Worke
 	 kubectl get all --namespace metallb-system
    ```
    
-    ***c. Configure Manifest File:***
+    ***b. Configure Manifest File:***
+   
     * The installation manifest does not include a configuration file. MetalLB’s components although will start, they will remain idle until we provide the required configuration as an IpAddressPool.
+      
    ```bash
 	 cat <<EOF > ipaddresspool.yaml
 	 apiVersion: metallb.io/v1beta1
@@ -291,7 +294,9 @@ It covers the installation of essential components for both Controller and Worke
 	    - 192.168.1.240-192.168.1.250
 	 EOF
    ```
-   ***d. Create an additional manifest and provision an object of type L2Advertisement:***
+   
+   * Create an additional manifest and provision an object of type L2Advertisement:
+     
    ```bash
 	 cat <<EOF > l2advertisement.yaml
          apiVersion: metallb.io/v1beta1
@@ -304,11 +309,13 @@ It covers the installation of essential components for both Controller and Worke
 	    - default-pool
 	 EOF
    ```
-   ***e. Deploy these manifests:***
+   * Deploy these manifests:
+     
    ```bash
 	 kubectl apply -f ipaddresspool.yaml
 	 kubectl apply -f l2advertisement.yaml
    ```
+   
 8. ***Installing the NFS CSI Driver on a Kubernetes cluster to allow for dynamic provisioning of Persistent Volumes:***
    
    ***a. Configure NFS Share (Controller Node):***
