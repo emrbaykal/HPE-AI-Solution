@@ -214,36 +214,48 @@ It covers the installation of essential components for both Controller and Worke
    ```
 3. ***Installing kubeadm & Join Kubernetes Cluster non Worker Nodes: (Worker Nodes)***
 
+   Apply the following steps on the Kubernetes worker nodes.
+
    ***a. Enable Kubernetes Repositories:***
+
+   * Add Kubernetes Repos to the repository to Apt sources:
+     
    ```bash
-	sudo apt-get update
-	# apt-transport-https may be a dummy package; if so, you can skip that package
-	sudo apt-get install -y apt-transport-https ca-certificates curl gpg
+   sudo apt-get update
+   # apt-transport-https may be a dummy package; if so, you can skip that package
+   sudo apt-get install -y apt-transport-https ca-certificates curl gpg
 	
-	# If the directory `/etc/apt/keyrings` does not exist, it should be created before the curl command.
-	sudo mkdir -p -m 755 /etc/apt/keyrings
-	curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.31/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+   # If the directory `/etc/apt/keyrings` does not exist, it should be created before the curl command.
+   sudo mkdir -p -m 755 /etc/apt/keyrings
+   curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.31/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 	
-	# This overwrites any existing configuration in /etc/apt/sources.list.d/kubernetes.list
-	echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.31/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
-   ```
-   ***b. Install kubelet & kubeadm & kubectl Packages:***
-   ```bash
-	sudo apt-get update
-	sudo apt-get install -y kubelet kubeadm kubectl
-	sudo apt-mark hold kubelet kubeadm kubectl
+   # This overwrites any existing configuration in /etc/apt/sources.list.d/kubernetes.list
+   echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.31/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
    ```
 
-   ***c. Join Cluster: (Retrieve the token and discovery-token-ca-certificate information from the previous setup)***
+   * Install kubelet & kubeadm & kubectl Packages:
+     
+   ```bash
+   sudo apt-get update
+   sudo apt-get install -y kubelet kubeadm kubectl
+   sudo apt-mark hold kubelet kubeadm kubectl
+   ```
+
+   ***b. Join Cluster:***
+
+   * To add new Linux worker nodes to your cluster do the following for each machine, Retrieve the token and discovery-token-ca-certificate information from the previous setup.
+   
    ```bash
 	sudo kubeadm join Controller-Node-IP:6443 --token xxx.xxx \
 	--discovery-token-ca-cert-hash sha256:xxxx
     ```
 
-6. ***Assign worker roles to the compute nodes: (Controller Node)***
+   * Assign worker roles to the compute nodes.
+     
     ```bash
 	kubectl label node Worker-Node-Name node-role.kubernetes.io/worker=worker
     ```
+    
 7. ***MetaLB Installation (Controller Node):***
 
    * MetalLB hooks into your Kubernetes cluster, and provides a network load-balancer implementation. In short, it allows you to create Kubernetes services of type LoadBalancer in clusters that don’t run on a cloud provider.
