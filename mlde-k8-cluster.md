@@ -126,7 +126,7 @@ It covers the installation of essential components for both Controller and Worke
        sudo systemctl status containerd
      ```
        
-3. ***Installing Kubeadm (Controller Node)***
+2. ***Installing Kubeadm (Controller Node)***
 
    Apply the following steps on the Kubernetes controller node.
 
@@ -163,7 +163,7 @@ It covers the installation of essential components for both Controller and Worke
    sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --v=5
    ```
     
-   ***d. Configure "kubectl" config files to the home directory:***
+   ***c. Configure "kubectl" config files to the home directory:***
 
    * Use kubeconfig files to organize information about clusters, users, namespaces, and authentication mechanisms.
      
@@ -184,7 +184,7 @@ It covers the installation of essential components for both Controller and Worke
    echo "complete -o default -F __start_kubectl k" >> ~/.bashrc
    ```
    
-   ***c. Installing a Pod network add-on:***
+   ***d. Install & Configure Pod network add-on:***
    
    * Download Flannel manifest file:
      
@@ -205,10 +205,14 @@ It covers the installation of essential components for both Controller and Worke
 		  "Type": "vxlan"
 		  }
                 }
+   ```
 
+   * Apply kube-flannel network:
+
+   ```bash
    kubectl apply kube-flannel.yml
    ```
-5. ***Installing kubeadm & Join Kubernetes Cluster non Worker Nodes: (Worker Nodes)***
+3. ***Installing kubeadm & Join Kubernetes Cluster non Worker Nodes: (Worker Nodes)***
 
    ***a. Enable Kubernetes Repositories:***
    ```bash
