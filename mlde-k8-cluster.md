@@ -128,7 +128,12 @@ It covers the installation of essential components for both Controller and Worke
        
 3. ***Installing Kubeadm (Controller Node)***
 
+   Apply the following steps on the Kubernetes controller node.
+
    ***a. Enable Kubernetes Repositories:***
+
+   * Add Kubernetes Repos to the repository to Apt sources:
+     
    ```bash
    sudo apt-get update
    # apt-transport-https may be a dummy package; if so, you can skip that package
@@ -142,25 +147,34 @@ It covers the installation of essential components for both Controller and Worke
    echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.31/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
    ```
 
-   ***b. Install kubelet & kubeadm & kubectl Packages:***
+   * Install kubelet & kubeadm & kubectl Packages:
+     
    ```bash
    sudo apt-get update
    sudo apt-get install -y kubelet kubeadm kubectl
    sudo apt-mark hold kubelet kubeadm kubectl
    ```
 
-   ***c. Creating a cluster with kubeadm:***
+   ***b. Creating a cluster with kubeadm:***
+   
    * This command initializes a Kubernetes control-plane node. The CIDR should be a subnet that is not part of the network you are working on.
+     
    ```bash
    sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --v=5
    ```
-   ***d. Copy the "kubectl" config files to the home directory:***
+    
+   ***d. Configure "kubectl" config files to the home directory:***
+
+   * Use kubeconfig files to organize information about clusters, users, namespaces, and authentication mechanisms.
+     
    ```bash
    mkdir -p $HOME/.kube
    sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
    sudo chown $(id -u):$(id -g) $HOME/.kube/config
    ```
-   ***e. - Enable Kubectl autocomplete:***
+   
+   * Enable Kubectl autocomplete:
+     
    ```bash
    # set up autocomplete in bash into the current shell, bash-completion package should be installed first.
    source <(kubectl completion bash)
@@ -169,12 +183,17 @@ It covers the installation of essential components for both Controller and Worke
    echo "alias k=kubectl" >> ~/.bashrc
    echo "complete -o default -F __start_kubectl k" >> ~/.bashrc
    ```
-   ***f. Installing a Pod network add-on:***
+   
+   ***c. Installing a Pod network add-on:***
+   
    * Download Flannel manifest file:
+     
    ```bash
    wget https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
    ```
-   ***g: Edit kube-flannel.yml, change "Network": "192.168.0.0/16"***
+   
+   * Edit kube-flannel.yml, change to "Network" "192.168.0.0/16":
+     
    ```bash
    vim kube-flannel.yml
 
@@ -189,7 +208,7 @@ It covers the installation of essential components for both Controller and Worke
 
    kubectl apply kube-flannel.yml
    ```
-4. ***Installing kubeadm & Join Kubernetes Cluster non Worker Nodes: (Worker Nodes)***
+5. ***Installing kubeadm & Join Kubernetes Cluster non Worker Nodes: (Worker Nodes)***
 
    ***a. Enable Kubernetes Repositories:***
    ```bash
@@ -217,11 +236,11 @@ It covers the installation of essential components for both Controller and Worke
 	--discovery-token-ca-cert-hash sha256:xxxx
     ```
 
-5. ***Assign worker roles to the compute nodes: (Controller Node)***
+6. ***Assign worker roles to the compute nodes: (Controller Node)***
     ```bash
 	kubectl label node Worker-Node-Name node-role.kubernetes.io/worker=worker
     ```
-6. ***MetaLB Installation (Controller Node):***
+7. ***MetaLB Installation (Controller Node):***
 
    * MetalLB hooks into your Kubernetes cluster, and provides a network load-balancer implementation. In short, it allows you to create Kubernetes services of type LoadBalancer in clusters that don’t run on a cloud provider.
 
@@ -265,7 +284,7 @@ It covers the installation of essential components for both Controller and Worke
 	 kubectl apply -f ipaddresspool.yaml
 	 kubectl apply -f l2advertisement.yaml
    ```
-7. ***Installing the NFS CSI Driver on a Kubernetes cluster to allow for dynamic provisioning of Persistent Volumes:***
+8. ***Installing the NFS CSI Driver on a Kubernetes cluster to allow for dynamic provisioning of Persistent Volumes:***
    
    ***a. Configure NFS Share (Controller Node):***
    * Install NFS Server & Client:
@@ -330,7 +349,7 @@ It covers the installation of essential components for both Controller and Worke
    kubectl get storageclasses
     kubectl describe storageclasses nfs-csi
    ```
-8. ***Install helm package:***
+9. ***Install helm package:***
 
    * Install Helm packages to use deploy environments:
    ```bash
