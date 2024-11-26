@@ -30,6 +30,10 @@ It covers the installation of essential components for both Controller and Worke
 
 6. **Install helm package**
    - Install Helm packages to use deploy environments
+  
+7. **Install NVIDIA CUDA Toolkit & Drivers**
+   - Install CUDA
+   - Install NVDIA driver
 
 ## Requirements
 - **Operating System:** Ubuntu 22.04
@@ -454,3 +458,14 @@ It covers the installation of essential components for both Controller and Worke
    ```bash
    nvidia-installer –version
    ```
+
+8. ***Installing the NVIDIA Container Toolkit:***
+
+   ***a. Prerequisites:***
+
+   * You installed a supported container engine (Docker, Containerd, CRI-O, Podman).
+   * You installed the NVIDIA Container Toolkit.
+10. ***Install NVIDIA CUDA Toolkit & Drivers:***
+
+   ***a. Prerequisites:***
+     
