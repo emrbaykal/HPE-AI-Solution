@@ -494,7 +494,7 @@ It covers the installation of essential components for both Controller and Worke
 
      ```bash
       kubectl create -f https://raw.githubusercontent.com/NVIDIA/k8s-device-plugin/v0.17.0/deployments/static/nvidia-device-plugin.yml
-      ```
+     ```
     * Running GPU Jobs (For testing purpose):
       
      ```bash
