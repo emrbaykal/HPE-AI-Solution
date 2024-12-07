@@ -51,9 +51,9 @@ It covers the installation of essential components for both Controller and Worke
      * You MUST disable swap in order for the kubelet to work properly. 
  
      ```bash
-     sudo swapoff /swapfile
-     sudo sed -i '/\/swapfile/d' /etc/fstab
-     sudo rm -f /swapfile
+     sudo swapoff /swap.img
+     sudo sed -i '/\/swap.img/d' /etc/fstab
+     sudo rm -f /swap.img
      ```
 
      ***b. Enable IPv4 Packet Forwarding:***
