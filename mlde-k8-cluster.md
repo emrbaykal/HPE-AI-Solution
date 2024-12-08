@@ -167,7 +167,7 @@ It covers the installation of essential components for both Controller and Worke
    * This command initializes a Kubernetes control-plane node. The CIDR should be a subnet that is not part of the network you are working on.
      
    ```bash
-   sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --v=5
+   sudo kubeadm init --pod-network-cidr=172.17.0.0/16 --v=5
    ```
     
    ***c. Configure "kubectl" config files to the home directory:***
