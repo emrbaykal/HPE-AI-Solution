@@ -393,8 +393,8 @@ It covers the installation of essential components for both Controller and Worke
      server: 192.168.199.11 ## NFS Server ip address
      share: /var/nfsshare/determined/
    reclaimPolicy: Delete
-     volumeBindingMode: Immediate
-     mountOptions:
+   volumeBindingMode: Immediate
+   mountOptions:
 	- nfsvers=3
    EOF
    ```
@@ -403,7 +403,7 @@ It covers the installation of essential components for both Controller and Worke
    ```bash
    kubectl apply -f nfs-sc.yaml
    kubectl get storageclasses
-    kubectl describe storageclasses nfs-csi
+   kubectl describe storageclasses nfs-csi
    ```
 6. ***Install helm package manager (Controller & Worker Nodes):***
 
