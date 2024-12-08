@@ -217,7 +217,7 @@ It covers the installation of essential components for both Controller and Worke
    * Apply kube-flannel network:
 
    ```bash
-   kubectl apply kube-flannel.yml
+   kubectl apply -f kube-flannel.yml
    ```
 3. ***Adding Worker Nodes: (Worker Nodes)***
 
