@@ -37,7 +37,7 @@ It covers the installation of essential components for both Controller and Worke
 
 ## Requirements
 - **Operating System:** Ubuntu 22.04
-- **Kubernetes Version:** v1.31 or later
+- **Kubernetes Version:** v1.32 or later
 - **Tools:** `kubeadm`, `kubectl`, `kubelet`, `containerd`, `MetaLB`, `NFS CSI Driver`
 
 ---
@@ -238,10 +238,10 @@ It covers the installation of essential components for both Controller and Worke
 	
    # If the directory `/etc/apt/keyrings` does not exist, it should be created before the curl command.
    sudo mkdir -p -m 755 /etc/apt/keyrings
-   curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.31/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+   curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.32/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 	
    # This overwrites any existing configuration in /etc/apt/sources.list.d/kubernetes.list
-   echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.31/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+   echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.32/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
    ```
 
    * Install kubelet & kubeadm & kubectl Packages:
